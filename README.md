@@ -1,6 +1,6 @@
 # Go Planhat - A simple Planhat Go Library
 
-[![Status](https://img.shields.io/badge/status-wip-yellow)](https://github.com/darrenparkinson/planhat) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/darrenparkinson/planhat) ![GitHub](https://img.shields.io/github/license/darrenparkinson/planhat?color=brightgreen) [![GoDoc](https://pkg.go.dev/badge/darrenparkinson/planhat)](https://pkg.go.dev/github.com/darrenparkinson/planhat) [![Go Report Card](https://goreportcard.com/badge/github.com/darrenparkinson/go-planhat)](https://goreportcard.com/report/github.com/darrenparkinson/planhat)
+[![Status](https://img.shields.io/badge/status-wip-yellow)](https://github.com/darrenparkinson/planhat) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/darrenparkinson/planhat) ![GitHub](https://img.shields.io/github/license/darrenparkinson/planhat?color=brightgreen) [![GoDoc](https://pkg.go.dev/badge/darrenparkinson/planhat)](https://pkg.go.dev/github.com/darrenparkinson/planhat) [![Go Report Card](https://goreportcard.com/badge/github.com/darrenparkinson/planhat)](https://goreportcard.com/report/github.com/darrenparkinson/planhat)
 
 This repository is intended as a simple to use library for the Go language to interact with the [Planhat API](https://docs.planhat.com/).
 
@@ -38,11 +38,6 @@ companies, err := ph.CompanyService.List(context.Background(), opts)
 ```
 
 The services of a client divide the API into logical areas and correspond to the structure of the Planhat API documentation at https://docs.planhat.com/
-
-Currently implemented models:
-
-* [Company Service](https://docs.planhat.com/#companies)
-* [User Service](https://docs.planhat.com/#users)
 
 NOTE: Using the context package, one can easily pass cancelation signals and deadlines to various services of the client for handling a request. In case there is no context available, then context.Background() can be used as a starting point.
 
@@ -157,7 +152,7 @@ if errors.Is(err, planhat.ErrUnauthorized) {
 |--------------|---------------------|-----------------------|
 | Asset        | AssetService        | Not Implemented       |
 | Churn        | ChurnService        | Not Implemented       |
-| Company      | CompanyService      | Partial               |
+| Company      | CompanyService      | Complete              |
 | Conversation | ConversationService | Not Implemented       |
 | Custom Field | Custom FieldService | Not Implemented       |
 | Enduser      | EnduserService      | Not Implemented       |

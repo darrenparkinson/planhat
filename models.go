@@ -14,3 +14,10 @@ type UpsertResponse struct {
 	UpsertedIDs      []string      `json:"upsertedIds"`
 	PermissionErrors []interface{} `json:"permissionErrors"`
 }
+
+// DeleteResponse is returned by planhat when deleting an object
+type DeleteResponse struct {
+	N            int `json:"n"`
+	OK           int `json:"ok"`
+	DeletedCount int `json:"deletedCount"`
+}

@@ -74,48 +74,46 @@ type Company struct {
 	Status             *string      `json:"status,omitempty"`
 }
 
-// List will list companies based on the CompanyListOptions provided
-func (s *CompanyService) List(ctx context.Context, options ...*CompanyListOptions) ([]*Company, error) {
-	cr := []*Company{}
-
+// Create creates a new company record
+func (s *CompanyService) Create(ctx context.Context, company Company) (*Company, error) {
+	co := &Company{}
 	url := fmt.Sprintf("%s/companies", s.client.BaseURL)
-	for _, option := range options {
-		var err error
-		url, err = addOptions(url, option)
-		if err != nil {
-			return cr, err
-		}
-	}
-	req, err := http.NewRequest("GET", url, nil)
+	payload, err := json.Marshal(company)
 	if err != nil {
-		return cr, err
+		return co, err
 	}
-	if err := s.client.makeRequest(ctx, req, &cr); err != nil {
-		return cr, err
+	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
+	if err != nil {
+		return co, err
 	}
-	return cr, nil
+	if err := s.client.makeRequest(ctx, req, co); err != nil {
+		return co, err
+	}
+	return co, nil
 }
 
-// LeanList returns a lightweight list of all companies in Planhat to match against your own ids etc.
-func (s *CompanyService) LeanList(ctx context.Context, options ...*LeanCompanyListOptions) ([]*LeanCompany, error) {
-	cr := []*LeanCompany{}
-
-	url := fmt.Sprintf("%s/leancompanies", s.client.BaseURL)
-	for _, option := range options {
-		var err error
-		url, err = addOptions(url, option)
-		if err != nil {
-			return cr, err
-		}
-	}
-	req, err := http.NewRequest("GET", url, nil)
+// Update will update a planhat company.
+// To update a company it is required to pass the company _id in the request.
+// Alternately it is possible to update using the company externalId and/or sourceId adding a prefix and passing one of these keyables as identifiers.
+// e.g. extid-{{externalId}} or srcid-{{sourceId}}
+// Note you may get a Bad Request error if you include the ID in the company record
+func (s *CompanyService) Update(ctx context.Context, id string, company Company) (*Company, error) {
+	co := &Company{}
+	url := fmt.Sprintf("%s/companies/%s", s.client.BaseURL, id)
+	log.Println(url)
+	payload, err := json.Marshal(company)
 	if err != nil {
-		return cr, err
+		return co, err
 	}
-	if err := s.client.makeRequest(ctx, req, &cr); err != nil {
-		return cr, err
+	log.Println(string(payload))
+	req, err := http.NewRequest("PUT", url, strings.NewReader(string(payload)))
+	if err != nil {
+		return co, err
 	}
-	return cr, nil
+	if err := s.client.makeRequest(ctx, req, co); err != nil {
+		return co, err
+	}
+	return co, nil
 }
 
 // Get returns a single company given it's planhat ID
@@ -160,22 +158,62 @@ func (s *CompanyService) GetBySourceID(ctx context.Context, sourceID string) (*C
 	return co, nil
 }
 
-// Create creates a new company record
-func (s *CompanyService) Create(ctx context.Context, company Company) (*Company, error) {
-	co := &Company{}
+// List will list companies based on the CompanyListOptions provided
+func (s *CompanyService) List(ctx context.Context, options ...*CompanyListOptions) ([]*Company, error) {
+	cr := []*Company{}
+
 	url := fmt.Sprintf("%s/companies", s.client.BaseURL)
-	payload, err := json.Marshal(company)
+	for _, option := range options {
+		var err error
+		url, err = addOptions(url, option)
+		if err != nil {
+			return cr, err
+		}
+	}
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return co, err
+		return cr, err
 	}
-	req, err := http.NewRequest("POST", url, strings.NewReader(string(payload)))
+	if err := s.client.makeRequest(ctx, req, &cr); err != nil {
+		return cr, err
+	}
+	return cr, nil
+}
+
+// LeanList returns a lightweight list of all companies in Planhat to match against your own ids etc.
+func (s *CompanyService) LeanList(ctx context.Context, options ...*LeanCompanyListOptions) ([]*LeanCompany, error) {
+	cr := []*LeanCompany{}
+
+	url := fmt.Sprintf("%s/leancompanies", s.client.BaseURL)
+	for _, option := range options {
+		var err error
+		url, err = addOptions(url, option)
+		if err != nil {
+			return cr, err
+		}
+	}
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return co, err
+		return cr, err
 	}
-	if err := s.client.makeRequest(ctx, req, co); err != nil {
-		return co, err
+	if err := s.client.makeRequest(ctx, req, &cr); err != nil {
+		return cr, err
 	}
-	return co, nil
+	return cr, nil
+}
+
+// Delete is used delete a company. It is required to pass the _id (ID).
+func (s *CompanyService) Delete(ctx context.Context, id string) (*DeleteResponse, error) {
+	url := fmt.Sprintf("%s/companies/%s", s.client.BaseURL, id)
+	req, err := http.NewRequest("DELETE", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	dr := &DeleteResponse{}
+	if err := s.client.makeRequest(ctx, req, dr); err != nil {
+		return dr, err
+	}
+	return dr, nil
 }
 
 // BulkUpsert will update or insert companies.
@@ -184,7 +222,6 @@ func (s *CompanyService) Create(ctx context.Context, company Company) (*Company,
 func (s *CompanyService) BulkUpsert(ctx context.Context, companies []Company) (*UpsertResponse, error) {
 	url := fmt.Sprintf("%s/companies", s.client.BaseURL)
 	payload, err := json.Marshal(companies)
-	log.Println(string(payload))
 	if err != nil {
 		return nil, err
 	}
