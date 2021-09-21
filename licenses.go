@@ -2,6 +2,7 @@ package planhat
 
 import "time"
 
+// License represents a planhat license
 type License struct {
 	ID         string  `json:"_id"`
 	ExternalID string  `json:"externalId"`

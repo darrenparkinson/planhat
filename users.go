@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// User represents a planhat user
 type User struct {
 	ID                         *string `json:"_id,omitempty"`
 	SkippedGettingStartedSteps struct {
@@ -97,8 +98,9 @@ type User struct {
 	} `json:"googleCalendarApi,omitempty"`
 }
 
-func (s *UserService) Get(ctx context.Context) ([]User, error) {
-	ur := []User{}
+// List returns a list of planhat users
+func (s *UserService) List(ctx context.Context) ([]*User, error) {
+	ur := []*User{}
 	url := fmt.Sprintf("%s/users", s.client.BaseURL)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

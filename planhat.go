@@ -21,6 +21,7 @@ import (
 	"golang.org/x/time/rate"
 )
 
+// Client is the main planhat client for interacting with the library.  It can be created using NewClient
 type Client struct {
 	// BaseURL for Planhat API.  Set to https://api-eu3.planhat.com using `planhat.New()`, or set directly.
 	BaseURL string

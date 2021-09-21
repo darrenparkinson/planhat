@@ -118,6 +118,7 @@ func (s *CompanyService) LeanList(ctx context.Context, options ...*LeanCompanyLi
 	return cr, nil
 }
 
+// Get returns a single company given it's planhat ID
 func (s *CompanyService) Get(ctx context.Context, id string) (*Company, error) {
 	co := &Company{}
 	url := fmt.Sprintf("%s/companies/%s", s.client.BaseURL, id)
