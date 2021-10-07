@@ -26,15 +26,22 @@ type Client struct {
 	// BaseURL for Planhat API.  Set to https://api-eu3.planhat.com using `planhat.New()`, or set directly.
 	BaseURL string
 
+	// MetricsURL for Planhat API.  Set to https://analytics.planhat.com/dimensiondata as per the planhat docs.
+	MetricsURL string
+
 	//HTTP Client to use for making requests, allowing the user to supply their own if required.
 	HTTPClient *http.Client
 
 	//API Key for Planhat.
 	APIKey string
 
+	//TenantUUID for posting to the metrics endpoint.  Only required if you're sending in metrics.
+	TenantUUID string
+
 	UserService    *UserService
 	CompanyService *CompanyService
 	EndUserService *EndUserService
+	MetricsService *MetricsService
 
 	lim *rate.Limiter
 }
@@ -51,6 +58,11 @@ type CompanyService struct {
 
 // EndUserService represents the End Users group
 type EndUserService struct {
+	client *Client
+}
+
+// MetricsService represents the Metrics methods
+type MetricsService struct {
 	client *Client
 }
 
@@ -75,6 +87,7 @@ func NewClient(apikey string, cluster string, client *http.Client) (*Client, err
 	rl := rate.NewLimiter(150, 1)
 	c := &Client{
 		BaseURL:    fmt.Sprintf("https://%s.planhat.com", apicluster),
+		MetricsURL: "https://analytics.planhat.com/dimensiondata",
 		HTTPClient: client,
 		APIKey:     apikey,
 		lim:        rl,
@@ -82,6 +95,7 @@ func NewClient(apikey string, cluster string, client *http.Client) (*Client, err
 	c.UserService = &UserService{client: c}
 	c.CompanyService = &CompanyService{client: c}
 	c.EndUserService = &EndUserService{client: c}
+	c.MetricsService = &MetricsService{client: c}
 
 	return c, nil
 }

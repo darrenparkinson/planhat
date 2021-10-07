@@ -15,6 +15,13 @@ type UpsertResponse struct {
 	PermissionErrors []interface{} `json:"permissionErrors"`
 }
 
+// UpsertMetricsResponse is the result of a bulk upsert operation as documented in the [planhat docs](https://docs.planhat.com/#bulkupsert_metrics).
+// Note the use of slices of empty interfaces due to the lack of documentation on what an error object is.
+type UpsertMetricsResponse struct {
+	Processed int           `json:"processed"`
+	Errors    []interface{} `json:"errors"`
+}
+
 // DeleteResponse is returned by planhat when deleting an object
 type DeleteResponse struct {
 	N            int `json:"n"`

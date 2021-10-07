@@ -148,13 +148,15 @@ if errors.Is(err, planhat.ErrUnauthorized) {
 
 # Services
 
+The following outlines the planhat models and their implementation status:
+
 | Model        | Service             | Implementation Status |
 |--------------|---------------------|-----------------------|
 | Asset        | AssetService        | Not Implemented       |
 | Churn        | ChurnService        | Not Implemented       |
 | Company      | CompanyService      | Complete              |
 | Conversation | ConversationService | Not Implemented       |
-| Custom Field | Custom FieldService | Not Implemented       |
+| Custom Field | CustomFieldService  | Not Implemented       |
 | Enduser      | EnduserService      | Not Implemented       |
 | Invoice      | InvoiceService      | Not Implemented       |
 | Issue        | IssueService        | Not Implemented       |
@@ -167,6 +169,13 @@ if errors.Is(err, planhat.ErrUnauthorized) {
 | Task         | TaskService         | Not Implemented       |
 | Ticket       | TicketService       | Not Implemented       |
 | User         | UserService         | Partial               |
+
+In addition to the Planhat Models, there are some additional endpoints in the documentation as outlined below:
+
+| Section         | Service             | Implementation Status |
+|-----------------|---------------------|-----------------------|
+| User Activities | UserActivityService | Not Implemented       |
+| Metrics         | MetricsService      | Complete              |
 
 # Contributing
 
