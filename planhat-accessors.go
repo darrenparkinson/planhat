@@ -9,6 +9,78 @@ import (
 	"time"
 )
 
+// GetCompanyID returns the CompanyID field if it's non-nil, zero value otherwise.
+func (a *Asset) GetCompanyID() string {
+	if a == nil || a.CompanyID == nil {
+		return ""
+	}
+	return *a.CompanyID
+}
+
+// GetExternalID returns the ExternalID field if it's non-nil, zero value otherwise.
+func (a *Asset) GetExternalID() string {
+	if a == nil || a.ExternalID == nil {
+		return ""
+	}
+	return *a.ExternalID
+}
+
+// GetID returns the ID field if it's non-nil, zero value otherwise.
+func (a *Asset) GetID() string {
+	if a == nil || a.ID == nil {
+		return ""
+	}
+	return *a.ID
+}
+
+// GetName returns the Name field if it's non-nil, zero value otherwise.
+func (a *Asset) GetName() string {
+	if a == nil || a.Name == nil {
+		return ""
+	}
+	return *a.Name
+}
+
+// GetSourceID returns the SourceID field if it's non-nil, zero value otherwise.
+func (a *Asset) GetSourceID() string {
+	if a == nil || a.SourceID == nil {
+		return ""
+	}
+	return *a.SourceID
+}
+
+// GetLimit returns the Limit field if it's non-nil, zero value otherwise.
+func (a *AssetListOptions) GetLimit() int {
+	if a == nil || a.Limit == nil {
+		return 0
+	}
+	return *a.Limit
+}
+
+// GetOffset returns the Offset field if it's non-nil, zero value otherwise.
+func (a *AssetListOptions) GetOffset() int {
+	if a == nil || a.Offset == nil {
+		return 0
+	}
+	return *a.Offset
+}
+
+// GetSelect returns the Select field if it's non-nil, zero value otherwise.
+func (a *AssetListOptions) GetSelect() string {
+	if a == nil || a.Select == nil {
+		return ""
+	}
+	return *a.Select
+}
+
+// GetSort returns the Sort field if it's non-nil, zero value otherwise.
+func (a *AssetListOptions) GetSort() string {
+	if a == nil || a.Sort == nil {
+		return ""
+	}
+	return *a.Sort
+}
+
 // GetCSMScore returns the CSMScore field if it's non-nil, zero value otherwise.
 func (c *Company) GetCSMScore() int {
 	if c == nil || c.CSMScore == nil {
@@ -223,6 +295,94 @@ func (l *LeanCompanyListOptions) GetStatus() string {
 		return ""
 	}
 	return *l.Status
+}
+
+// GetDate returns the Date field if it's non-nil, zero value otherwise.
+func (m *Metric) GetDate() string {
+	if m == nil || m.Date == nil {
+		return ""
+	}
+	return *m.Date
+}
+
+// GetDimensionID returns the DimensionID field if it's non-nil, zero value otherwise.
+func (m *Metric) GetDimensionID() string {
+	if m == nil || m.DimensionID == nil {
+		return ""
+	}
+	return *m.DimensionID
+}
+
+// GetExternalID returns the ExternalID field if it's non-nil, zero value otherwise.
+func (m *Metric) GetExternalID() string {
+	if m == nil || m.ExternalID == nil {
+		return ""
+	}
+	return *m.ExternalID
+}
+
+// GetModel returns the Model field if it's non-nil, zero value otherwise.
+func (m *Metric) GetModel() string {
+	if m == nil || m.Model == nil {
+		return ""
+	}
+	return *m.Model
+}
+
+// GetValue returns the Value field.
+func (m *Metric) GetValue() *float64 {
+	if m == nil {
+		return nil
+	}
+	return m.Value
+}
+
+// GetCID returns the CID field if it's non-nil, zero value otherwise.
+func (m *MetricsListOptions) GetCID() string {
+	if m == nil || m.CID == nil {
+		return ""
+	}
+	return *m.CID
+}
+
+// GetDimID returns the DimID field if it's non-nil, zero value otherwise.
+func (m *MetricsListOptions) GetDimID() string {
+	if m == nil || m.DimID == nil {
+		return ""
+	}
+	return *m.DimID
+}
+
+// GetFrom returns the From field if it's non-nil, zero value otherwise.
+func (m *MetricsListOptions) GetFrom() int {
+	if m == nil || m.From == nil {
+		return 0
+	}
+	return *m.From
+}
+
+// GetLimit returns the Limit field if it's non-nil, zero value otherwise.
+func (m *MetricsListOptions) GetLimit() int {
+	if m == nil || m.Limit == nil {
+		return 0
+	}
+	return *m.Limit
+}
+
+// GetOffset returns the Offset field if it's non-nil, zero value otherwise.
+func (m *MetricsListOptions) GetOffset() int {
+	if m == nil || m.Offset == nil {
+		return 0
+	}
+	return *m.Offset
+}
+
+// GetTo returns the To field if it's non-nil, zero value otherwise.
+func (m *MetricsListOptions) GetTo() int {
+	if m == nil || m.To == nil {
+		return 0
+	}
+	return *m.To
 }
 
 // GetCompanyFilter returns the CompanyFilter field if it's non-nil, zero value otherwise.

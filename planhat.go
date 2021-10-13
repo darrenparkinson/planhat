@@ -38,16 +38,22 @@ type Client struct {
 	//TenantUUID for posting to the metrics endpoint.  Only required if you're sending in metrics.
 	TenantUUID string
 
-	UserService    *UserService
+	MetricsService *MetricsService
+	AssetService   *AssetService
 	CompanyService *CompanyService
 	EndUserService *EndUserService
-	MetricsService *MetricsService
+	UserService    *UserService
 
 	lim *rate.Limiter
 }
 
-// UserService represents the Users group
-type UserService struct {
+// MetricsService represents the Metrics methods
+type MetricsService struct {
+	client *Client
+}
+
+// AssetService represents the Assets group
+type AssetService struct {
 	client *Client
 }
 
@@ -61,8 +67,8 @@ type EndUserService struct {
 	client *Client
 }
 
-// MetricsService represents the Metrics methods
-type MetricsService struct {
+// UserService represents the Users group
+type UserService struct {
 	client *Client
 }
 
@@ -92,10 +98,11 @@ func NewClient(apikey string, cluster string, client *http.Client) (*Client, err
 		APIKey:     apikey,
 		lim:        rl,
 	}
-	c.UserService = &UserService{client: c}
+	c.MetricsService = &MetricsService{client: c}
+	c.AssetService = &AssetService{client: c}
 	c.CompanyService = &CompanyService{client: c}
 	c.EndUserService = &EndUserService{client: c}
-	c.MetricsService = &MetricsService{client: c}
+	c.UserService = &UserService{client: c}
 
 	return c, nil
 }

@@ -10,6 +10,96 @@ import (
 	"time"
 )
 
+func TestAsset_GetCompanyID(tt *testing.T) {
+	var zeroValue string
+	a := &Asset{CompanyID: &zeroValue}
+	a.GetCompanyID()
+	a = &Asset{}
+	a.GetCompanyID()
+	a = nil
+	a.GetCompanyID()
+}
+
+func TestAsset_GetExternalID(tt *testing.T) {
+	var zeroValue string
+	a := &Asset{ExternalID: &zeroValue}
+	a.GetExternalID()
+	a = &Asset{}
+	a.GetExternalID()
+	a = nil
+	a.GetExternalID()
+}
+
+func TestAsset_GetID(tt *testing.T) {
+	var zeroValue string
+	a := &Asset{ID: &zeroValue}
+	a.GetID()
+	a = &Asset{}
+	a.GetID()
+	a = nil
+	a.GetID()
+}
+
+func TestAsset_GetName(tt *testing.T) {
+	var zeroValue string
+	a := &Asset{Name: &zeroValue}
+	a.GetName()
+	a = &Asset{}
+	a.GetName()
+	a = nil
+	a.GetName()
+}
+
+func TestAsset_GetSourceID(tt *testing.T) {
+	var zeroValue string
+	a := &Asset{SourceID: &zeroValue}
+	a.GetSourceID()
+	a = &Asset{}
+	a.GetSourceID()
+	a = nil
+	a.GetSourceID()
+}
+
+func TestAssetListOptions_GetLimit(tt *testing.T) {
+	var zeroValue int
+	a := &AssetListOptions{Limit: &zeroValue}
+	a.GetLimit()
+	a = &AssetListOptions{}
+	a.GetLimit()
+	a = nil
+	a.GetLimit()
+}
+
+func TestAssetListOptions_GetOffset(tt *testing.T) {
+	var zeroValue int
+	a := &AssetListOptions{Offset: &zeroValue}
+	a.GetOffset()
+	a = &AssetListOptions{}
+	a.GetOffset()
+	a = nil
+	a.GetOffset()
+}
+
+func TestAssetListOptions_GetSelect(tt *testing.T) {
+	var zeroValue string
+	a := &AssetListOptions{Select: &zeroValue}
+	a.GetSelect()
+	a = &AssetListOptions{}
+	a.GetSelect()
+	a = nil
+	a.GetSelect()
+}
+
+func TestAssetListOptions_GetSort(tt *testing.T) {
+	var zeroValue string
+	a := &AssetListOptions{Sort: &zeroValue}
+	a.GetSort()
+	a = &AssetListOptions{}
+	a.GetSort()
+	a = nil
+	a.GetSort()
+}
+
 func TestCompany_GetCSMScore(tt *testing.T) {
 	var zeroValue int
 	c := &Company{CSMScore: &zeroValue}
@@ -266,6 +356,113 @@ func TestLeanCompanyListOptions_GetStatus(tt *testing.T) {
 	l.GetStatus()
 	l = nil
 	l.GetStatus()
+}
+
+func TestMetric_GetDate(tt *testing.T) {
+	var zeroValue string
+	m := &Metric{Date: &zeroValue}
+	m.GetDate()
+	m = &Metric{}
+	m.GetDate()
+	m = nil
+	m.GetDate()
+}
+
+func TestMetric_GetDimensionID(tt *testing.T) {
+	var zeroValue string
+	m := &Metric{DimensionID: &zeroValue}
+	m.GetDimensionID()
+	m = &Metric{}
+	m.GetDimensionID()
+	m = nil
+	m.GetDimensionID()
+}
+
+func TestMetric_GetExternalID(tt *testing.T) {
+	var zeroValue string
+	m := &Metric{ExternalID: &zeroValue}
+	m.GetExternalID()
+	m = &Metric{}
+	m.GetExternalID()
+	m = nil
+	m.GetExternalID()
+}
+
+func TestMetric_GetModel(tt *testing.T) {
+	var zeroValue string
+	m := &Metric{Model: &zeroValue}
+	m.GetModel()
+	m = &Metric{}
+	m.GetModel()
+	m = nil
+	m.GetModel()
+}
+
+func TestMetric_GetValue(tt *testing.T) {
+	m := &Metric{}
+	m.GetValue()
+	m = nil
+	m.GetValue()
+}
+
+func TestMetricsListOptions_GetCID(tt *testing.T) {
+	var zeroValue string
+	m := &MetricsListOptions{CID: &zeroValue}
+	m.GetCID()
+	m = &MetricsListOptions{}
+	m.GetCID()
+	m = nil
+	m.GetCID()
+}
+
+func TestMetricsListOptions_GetDimID(tt *testing.T) {
+	var zeroValue string
+	m := &MetricsListOptions{DimID: &zeroValue}
+	m.GetDimID()
+	m = &MetricsListOptions{}
+	m.GetDimID()
+	m = nil
+	m.GetDimID()
+}
+
+func TestMetricsListOptions_GetFrom(tt *testing.T) {
+	var zeroValue int
+	m := &MetricsListOptions{From: &zeroValue}
+	m.GetFrom()
+	m = &MetricsListOptions{}
+	m.GetFrom()
+	m = nil
+	m.GetFrom()
+}
+
+func TestMetricsListOptions_GetLimit(tt *testing.T) {
+	var zeroValue int
+	m := &MetricsListOptions{Limit: &zeroValue}
+	m.GetLimit()
+	m = &MetricsListOptions{}
+	m.GetLimit()
+	m = nil
+	m.GetLimit()
+}
+
+func TestMetricsListOptions_GetOffset(tt *testing.T) {
+	var zeroValue int
+	m := &MetricsListOptions{Offset: &zeroValue}
+	m.GetOffset()
+	m = &MetricsListOptions{}
+	m.GetOffset()
+	m = nil
+	m.GetOffset()
+}
+
+func TestMetricsListOptions_GetTo(tt *testing.T) {
+	var zeroValue int
+	m := &MetricsListOptions{To: &zeroValue}
+	m.GetTo()
+	m = &MetricsListOptions{}
+	m.GetTo()
+	m = nil
+	m.GetTo()
 }
 
 func TestUser_GetCompanyFilter(tt *testing.T) {

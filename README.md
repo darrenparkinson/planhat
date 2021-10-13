@@ -75,14 +75,14 @@ opts := &planhat.CompanyListOptions{
 
 This can cause challenges when receiving results since you may encounter a panic if you access a nil pointer, e.g:
 
-```
+```go
 company, _ := ph.CompanyService.GetCompany(ctx, "123123123abcabcabc")
 log.Println(*company.ExternalID)
 ```
 
 In this case, if the external id has no value, you would receive a `panic: runtime error: invalid memory address or nil pointer dereference` error.  Clearly this isn't a very nice user experience, so where appropriate, "getter" accessor functions are generated automatically for structs with pointer fields to enable you to safely retrieve values:
 
-```
+```go
 company, _ := ph.CompanyService.GetCompany(ctx, "123123123abcabcabc")
 log.Println(company.GetExternalID())
 ```
@@ -98,18 +98,18 @@ companies, err := c.CompanyService.List(ctx, &planhat.CompanyListOptions{Limit: 
 By way of an example, you might use the following to work through multiple pages:
 
 ```go
-    var allCompanies []*planhat.Company
-	limit, offset := 10, 0
-	for {
-		companies, _ := ph.CompanyService.List(ctx, &planhat.CompanyListOptions{Limit: planhat.Int(limit), Offset: planhat.Int(offset)})
-		log.Println("Retrieved", len(companies), "companies")
-		offset += limit
-		if len(companies) == 0 {
-			break
-		}
-		allCompanies = append(allCompanies, companies...)
-	}
-	log.Println("Found total", len(allCompanies), "companies.")
+var allCompanies []*planhat.Company
+limit, offset := 10, 0
+for {
+    companies, _ := ph.CompanyService.List(ctx, &planhat.CompanyListOptions{Limit: planhat.Int(limit), Offset: planhat.Int(offset)})
+    log.Println("Retrieved", len(companies), "companies")
+    offset += limit
+    if len(companies) == 0 {
+	    break
+    }
+    allCompanies = append(allCompanies, companies...)
+}
+log.Println("Found total", len(allCompanies), "companies.")
 ```
 
 As you can see, planhat doesn't provide a mechanism to check if there are more values, so we keep going until there are no results.
@@ -152,7 +152,7 @@ The following outlines the planhat models and their implementation status:
 
 | Model        | Service             | Implementation Status |
 |--------------|---------------------|-----------------------|
-| Asset        | AssetService        | Not Implemented       |
+| Asset        | AssetService        | Complete              |
 | Churn        | ChurnService        | Not Implemented       |
 | Company      | CompanyService      | Complete              |
 | Conversation | ConversationService | Not Implemented       |

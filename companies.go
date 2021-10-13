@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -100,12 +99,10 @@ func (s *CompanyService) Create(ctx context.Context, company Company) (*Company,
 func (s *CompanyService) Update(ctx context.Context, id string, company Company) (*Company, error) {
 	co := &Company{}
 	url := fmt.Sprintf("%s/companies/%s", s.client.BaseURL, id)
-	log.Println(url)
 	payload, err := json.Marshal(company)
 	if err != nil {
 		return co, err
 	}
-	log.Println(string(payload))
 	req, err := http.NewRequest("PUT", url, strings.NewReader(string(payload)))
 	if err != nil {
 		return co, err
