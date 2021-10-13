@@ -67,8 +67,8 @@ Most structs for resources use pointer values.  This allows distinguishing betwe
 
 ```go
 opts := &planhat.CompanyListOptions{
-    Limit:  planhat.Int(10),
-    Offset: planhat.Int(0),
+	Limit:  planhat.Int(10),
+	Offset: planhat.Int(0),
 	Sort:   planhat.String("name"),
 }
 ```
