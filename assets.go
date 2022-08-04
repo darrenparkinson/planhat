@@ -24,6 +24,9 @@ type AssetListOptions struct {
 	// Select specific properties. This is case sensitive and currently needs to be the planhat names as
 	// a comma separated string, e.g. "companyid,name".
 	Select *string `url:"select,omitempty"`
+
+	// Filter using company id. Multiple ids can be used separating them by commas.
+	CompanyID *string `url:"companyId,omitempty"`
 }
 
 // Asset represents a planhat asset.
