@@ -126,12 +126,13 @@ Note that the sort string appears to be case sensitive and must currently use th
 
 ## Errors
 
-In the [documentation](https://docs.planhat.com/), Planhat identifies the following returned errors.  These are provided as constants so that you may check against them:
+In the [documentation](https://docs.planhat.com/), Planhat identifies the following returned errors. Additionally, Planhat returns an undocumented error (404) when an entity is not found. These are provided as constants so that you may check against them:
 
 | Code | Error                | Constant           |
 |------|----------------------|--------------------|
 | 400  | Bad Request          | `ErrBadRequest`    |
 | 401  | Unauthorized Request | `ErrUnauthorized`  |
+| 404  | Not Found            | `ErrNotFound`      |
 | 403  | Forbidden            | `ErrForbidden`     |
 | 500  | Internal Error       | `ErrInternalError` |
 
