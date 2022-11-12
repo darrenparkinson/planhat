@@ -13,6 +13,7 @@ const (
 	ErrBadRequest        = Err("planhat: bad request")
 	ErrUnauthorized      = Err("planhat: unauthorized request")
 	ErrForbidden         = Err("planhat: forbidden")
+	ErrNotFound          = Err("planhat: not found")
 	ErrInternalError     = Err("planhat: internal error")
 	ErrUnknown           = Err("planhat: unexpected error occurred")
 	ErrMissingTenantUUID = Err("planhat: missing required tenant uuid for this request")

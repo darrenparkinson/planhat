@@ -155,6 +155,8 @@ func (c *Client) makeRequest(ctx context.Context, req *http.Request, v interface
 			planhatErr = ErrUnauthorized
 		case 403:
 			planhatErr = ErrForbidden
+		case 404:
+			planhatErr = ErrNotFound
 		case 500:
 			planhatErr = ErrInternalError
 		default:
