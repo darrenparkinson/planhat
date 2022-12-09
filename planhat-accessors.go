@@ -49,6 +49,14 @@ func (a *Asset) GetSourceID() string {
 	return *a.SourceID
 }
 
+// GetCompanyID returns the CompanyID field if it's non-nil, zero value otherwise.
+func (a *AssetListOptions) GetCompanyID() string {
+	if a == nil || a.CompanyID == nil {
+		return ""
+	}
+	return *a.CompanyID
+}
+
 // GetLimit returns the Limit field if it's non-nil, zero value otherwise.
 func (a *AssetListOptions) GetLimit() int {
 	if a == nil || a.Limit == nil {
@@ -185,20 +193,20 @@ func (c *Company) GetName() string {
 	return *c.Name
 }
 
-// GetNRR30 returns the NRR30 field if it's non-nil, zero value otherwise.
-func (c *Company) GetNRR30() int {
-	if c == nil || c.NRR30 == nil {
-		return 0
+// GetNRR30 returns the NRR30 field.
+func (c *Company) GetNRR30() *float64 {
+	if c == nil {
+		return nil
 	}
-	return *c.NRR30
+	return c.NRR30
 }
 
-// GetNRRTotal returns the NRRTotal field if it's non-nil, zero value otherwise.
-func (c *Company) GetNRRTotal() int {
-	if c == nil || c.NRRTotal == nil {
-		return 0
+// GetNRRTotal returns the NRRTotal field.
+func (c *Company) GetNRRTotal() *float64 {
+	if c == nil {
+		return nil
 	}
-	return *c.NRRTotal
+	return c.NRRTotal
 }
 
 // GetPhase returns the Phase field if it's non-nil, zero value otherwise.
