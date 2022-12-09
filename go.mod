@@ -1,4 +1,4 @@
-module github.com/darrenparkinson/planhat
+module github.com/nic-gibson/planhat
 
 go 1.16
 
