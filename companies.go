@@ -61,8 +61,8 @@ type Company struct {
 	MRRTotal      *float64               `json:"mrrTotal,omitempty"`
 	MRTotal       *float64               `json:"mrTotal,omitempty"`
 	Name          *string                `json:"name,omitempty"`
-	NRR30         *int                   `json:"nrr30,omitempty"`
-	NRRTotal      *int                   `json:"nrrTotal,omitempty"`
+	NRR30         *float64               `json:"nrr30,omitempty"`
+	NRRTotal      *float64               `json:"nrrTotal,omitempty"`
 	// Owner of the company.  Empty interface due to GetCompany returning an ID string and GetCompanies returning an ID and Nickname
 	Owner              *interface{} `json:"owner,omitempty"`
 	Phase              *string      `json:"phase,omitempty"`

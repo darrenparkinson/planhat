@@ -60,6 +60,16 @@ func TestAsset_GetSourceID(tt *testing.T) {
 	a.GetSourceID()
 }
 
+func TestAssetListOptions_GetCompanyID(tt *testing.T) {
+	var zeroValue string
+	a := &AssetListOptions{CompanyID: &zeroValue}
+	a.GetCompanyID()
+	a = &AssetListOptions{}
+	a.GetCompanyID()
+	a = nil
+	a.GetCompanyID()
+}
+
 func TestAssetListOptions_GetLimit(tt *testing.T) {
 	var zeroValue int
 	a := &AssetListOptions{Limit: &zeroValue}
@@ -219,20 +229,14 @@ func TestCompany_GetName(tt *testing.T) {
 }
 
 func TestCompany_GetNRR30(tt *testing.T) {
-	var zeroValue int
-	c := &Company{NRR30: &zeroValue}
-	c.GetNRR30()
-	c = &Company{}
+	c := &Company{}
 	c.GetNRR30()
 	c = nil
 	c.GetNRR30()
 }
 
 func TestCompany_GetNRRTotal(tt *testing.T) {
-	var zeroValue int
-	c := &Company{NRRTotal: &zeroValue}
-	c.GetNRRTotal()
-	c = &Company{}
+	c := &Company{}
 	c.GetNRRTotal()
 	c = nil
 	c.GetNRRTotal()
