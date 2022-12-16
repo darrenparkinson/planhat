@@ -180,6 +180,26 @@ func TestCompany_GetLastRenewal(tt *testing.T) {
 	c.GetLastRenewal()
 }
 
+func TestCompany_GetLastTouch(tt *testing.T) {
+	var zeroValue string
+	c := &Company{LastTouch: &zeroValue}
+	c.GetLastTouch()
+	c = &Company{}
+	c.GetLastTouch()
+	c = nil
+	c.GetLastTouch()
+}
+
+func TestCompany_GetLastTouchType(tt *testing.T) {
+	var zeroValue string
+	c := &Company{LastTouchType: &zeroValue}
+	c.GetLastTouchType()
+	c = &Company{}
+	c.GetLastTouchType()
+	c = nil
+	c.GetLastTouchType()
+}
+
 func TestCompany_GetLicenses(tt *testing.T) {
 	var zeroValue []License
 	c := &Company{Licenses: &zeroValue}

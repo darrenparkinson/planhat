@@ -145,6 +145,22 @@ func (c *Company) GetLastRenewal() time.Time {
 	return *c.LastRenewal
 }
 
+// GetLastTouch returns the LastTouch field if it's non-nil, zero value otherwise.
+func (c *Company) GetLastTouch() string {
+	if c == nil || c.LastTouch == nil {
+		return ""
+	}
+	return *c.LastTouch
+}
+
+// GetLastTouchType returns the LastTouchType field if it's non-nil, zero value otherwise.
+func (c *Company) GetLastTouchType() string {
+	if c == nil || c.LastTouchType == nil {
+		return ""
+	}
+	return *c.LastTouchType
+}
+
 // GetLicenses returns the Licenses field if it's non-nil, zero value otherwise.
 func (c *Company) GetLicenses() []License {
 	if c == nil || c.Licenses == nil {
