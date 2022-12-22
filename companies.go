@@ -44,33 +44,34 @@ type LeanCompany struct {
 // Company represents a planhat company.
 type Company struct {
 	// CoOwner of the company.  Empty interface due to GetCompany returning an ID string and GetCompanies returning an ID and Nickname
-	CoOwner       *interface{}           `json:"coOwner,omitempty"`
-	CSMScore      *int                   `json:"csmScore,omitempty"`
-	Custom        map[string]interface{} `json:"custom,omitempty"`
-	CustomerFrom  *time.Time             `json:"customerFrom,omitempty"`
-	CustomerTo    *time.Time             `json:"customerTo,omitempty"`
-	ExternalID    *string                `json:"externalId,omitempty"`
-	H             *int                   `json:"h,omitempty"`
-	ID            *string                `json:"_id,omitempty"`
-	LastRenewal   *time.Time             `json:"lastRenewal,omitempty"`
-	LastTouch     *interface{}           `json:"lastTouch,omitempty"`
-	LastTouchType *interface{}           `json:"lastTouchType,omitempty"`
-	Licenses      *[]License             `json:"licenses,omitempty"`
-	MR            *float64               `json:"mr,omitempty"`
-	MRR           *float64               `json:"mrr,omitempty"`
-	MRRTotal      *float64               `json:"mrrTotal,omitempty"`
-	MRTotal       *float64               `json:"mrTotal,omitempty"`
-	Name          *string                `json:"name,omitempty"`
-	NRR30         *float64               `json:"nrr30,omitempty"`
-	NRRTotal      *float64               `json:"nrrTotal,omitempty"`
+	CoOwner         interface{}            `json:"coOwner,omitempty"`
+	CSMScore        *int                   `json:"csmScore,omitempty"`
+	Custom          map[string]interface{} `json:"custom,omitempty"`
+	CustomerFrom    *time.Time             `json:"customerFrom,omitempty"`
+	CustomerTo      *time.Time             `json:"customerTo,omitempty"`
+	ExternalID      *string                `json:"externalId,omitempty"`
+	H               *int                   `json:"h,omitempty"`
+	ID              *string                `json:"_id,omitempty"`
+	LastRenewal     *time.Time             `json:"lastRenewal,omitempty"`
+	LastTouch       *string                `json:"lastTouch,omitempty"`
+	LastTouchType   *string                `json:"lastTouchType,omitempty"`
+	LastTouchByType interface{}            `json:"lastTouchByType,omitempty"`
+	Licenses        *[]License             `json:"licenses,omitempty"`
+	MR              *float64               `json:"mr,omitempty"`
+	MRR             *float64               `json:"mrr,omitempty"`
+	MRRTotal        *float64               `json:"mrrTotal,omitempty"`
+	MRTotal         *float64               `json:"mrTotal,omitempty"`
+	Name            *string                `json:"name,omitempty"`
+	NRR30           *float64               `json:"nrr30,omitempty"`
+	NRRTotal        *float64               `json:"nrrTotal,omitempty"`
 	// Owner of the company.  Empty interface due to GetCompany returning an ID string and GetCompanies returning an ID and Nickname
-	Owner              *interface{} `json:"owner,omitempty"`
-	Phase              *string      `json:"phase,omitempty"`
-	PhaseSince         *time.Time   `json:"phaseSince,omitempty"`
-	Products           *[]string    `json:"products,omitempty"`
-	RenewalDate        *time.Time   `json:"renewalDate,omitempty"`
-	RenewalDaysFromNow *int         `json:"renewalDaysFromNow,omitempty"`
-	Status             *string      `json:"status,omitempty"`
+	Owner              interface{} `json:"owner,omitempty"`
+	Phase              *string     `json:"phase,omitempty"`
+	PhaseSince         *time.Time  `json:"phaseSince,omitempty"`
+	Products           *[]string   `json:"products,omitempty"`
+	RenewalDate        *time.Time  `json:"renewalDate,omitempty"`
+	RenewalDaysFromNow *int        `json:"renewalDaysFromNow,omitempty"`
+	Status             *string     `json:"status,omitempty"`
 }
 
 // Create creates a new company record

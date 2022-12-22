@@ -21,31 +21,26 @@ type User struct {
 	Image struct {
 		Path *string `json:"path,omitempty"`
 	} `json:"image,omitempty"`
-	FirstName            *string  `json:"firstName,omitempty"`
-	LastName             *string  `json:"lastName,omitempty"`
-	IsHidden             *bool    `json:"isHidden,omitempty"`
-	Removed              *bool    `json:"removed,omitempty"`
-	Inactive             *bool    `json:"inactive,omitempty"`
-	CompressedView       *bool    `json:"compressedView,omitempty"`
-	CompanyFilter        *string  `json:"companyFilter,omitempty"`
-	TaskFilter           *string  `json:"taskFilter,omitempty"`
-	WorkflowFilter       *string  `json:"workflowFilter,omitempty"`
-	PlayLogDisabled      *bool    `json:"playLogDisabled,omitempty"`
-	RadarOneLine         *bool    `json:"radarOneLine,omitempty"`
-	CollapsedFolders     []string `json:"collapsedFolders,omitempty"`
-	RevReportPeriodType  *string  `json:"revReportPeriodType,omitempty"`
-	SplitLayoutDisabled  *bool    `json:"splitLayoutDisabled,omitempty"`
-	DailyDigest          *bool    `json:"dailyDigest,omitempty"`
-	FollowerUpdate       *bool    `json:"followerUpdate,omitempty"`
-	InAppNotifications   *bool    `json:"inAppNotifications,omitempty"`
-	LastVisitedCompanies []string `json:"lastVisitedCompanies,omitempty"`
-	LastVisitedEndusers  []string `json:"lastVisitedEndusers,omitempty"`
-	Roles                []struct {
-		ID          *string `json:"_id,omitempty"`
-		Name        *string `json:"name,omitempty"`
-		Description *string `json:"description,omitempty"`
-		V           *int    `json:"__v,omitempty"`
-	} `json:"roles,omitempty"`
+	FirstName               *string    `json:"firstName,omitempty"`
+	LastName                *string    `json:"lastName,omitempty"`
+	IsHidden                *bool      `json:"isHidden,omitempty"`
+	Removed                 *bool      `json:"removed,omitempty"`
+	Inactive                *bool      `json:"inactive,omitempty"`
+	CompressedView          *bool      `json:"compressedView,omitempty"`
+	CompanyFilter           *string    `json:"companyFilter,omitempty"`
+	TaskFilter              *string    `json:"taskFilter,omitempty"`
+	WorkflowFilter          *string    `json:"workflowFilter,omitempty"`
+	PlayLogDisabled         *bool      `json:"playLogDisabled,omitempty"`
+	RadarOneLine            *bool      `json:"radarOneLine,omitempty"`
+	CollapsedFolders        []string   `json:"collapsedFolders,omitempty"`
+	RevReportPeriodType     *string    `json:"revReportPeriodType,omitempty"`
+	SplitLayoutDisabled     *bool      `json:"splitLayoutDisabled,omitempty"`
+	DailyDigest             *bool      `json:"dailyDigest,omitempty"`
+	FollowerUpdate          *bool      `json:"followerUpdate,omitempty"`
+	InAppNotifications      *bool      `json:"inAppNotifications,omitempty"`
+	LastVisitedCompanies    []string   `json:"lastVisitedCompanies,omitempty"`
+	LastVisitedEndusers     []string   `json:"lastVisitedEndusers,omitempty"`
+	Roles                   []string   `json:"roles,omitempty"`
 	IsExposedAsSenderOption *bool      `json:"isExposedAsSenderOption,omitempty"`
 	DefaultMeetingLength    *int       `json:"defaultMeetingLength,omitempty"`
 	NickName                *string    `json:"nickName,omitempty"`
@@ -110,4 +105,18 @@ func (s *UserService) List(ctx context.Context) ([]*User, error) {
 		return ur, err
 	}
 	return ur, nil
+}
+
+// Get returns a single user given it's planhat ID
+func (s *UserService) Get(ctx context.Context, id string) (*User, error) {
+	user := &User{}
+	url := fmt.Sprintf("%s/users/%s", s.client.BaseURL, id)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return user, err
+	}
+	if err := s.client.makeRequest(ctx, req, &user); err != nil {
+		return user, err
+	}
+	return user, nil
 }
