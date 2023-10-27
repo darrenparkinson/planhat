@@ -7,6 +7,13 @@ import (
 	"time"
 )
 
+type Role struct {
+	Id          *string `json:"id,omitempty"`
+	Name        *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	V           *int    `json:"__v,omitempty"`
+}
+
 // User represents a planhat user
 type User struct {
 	ID                         *string `json:"_id,omitempty"`
@@ -40,7 +47,7 @@ type User struct {
 	InAppNotifications      *bool      `json:"inAppNotifications,omitempty"`
 	LastVisitedCompanies    []string   `json:"lastVisitedCompanies,omitempty"`
 	LastVisitedEndusers     []string   `json:"lastVisitedEndusers,omitempty"`
-	Roles                   []string   `json:"roles,omitempty"`
+	Roles                   []*Role    `json:"roles,omitempty"`
 	IsExposedAsSenderOption *bool      `json:"isExposedAsSenderOption,omitempty"`
 	DefaultMeetingLength    *int       `json:"defaultMeetingLength,omitempty"`
 	NickName                *string    `json:"nickName,omitempty"`
